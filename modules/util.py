@@ -220,7 +220,7 @@ def matrix_inverse(batch_of_matrix, eps=0):
     else:
         b_mat = batch_of_matrix
         eye = b_mat.new_ones(b_mat.size(-1)).diag().expand_as(b_mat)
-        b_inv, _ = torch.gesv(eye, b_mat)
+        b_inv, _ = torch.solve(eye, b_mat)
         return b_inv
 
 
